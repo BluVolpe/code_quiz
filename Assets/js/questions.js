@@ -1,4 +1,4 @@
-const questions = [
+let questions = [
     {
         question:"What does HTML stand for?",
         choice:["Hyper Trainer Marking Language", "Hyper Text Marketing Language", "Hyper Text Markup Language", "Hyper Text Markup Leveler"],
