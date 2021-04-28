@@ -22,6 +22,9 @@ function getCurrentQuestion() {
   let currentQuestion = questions[currentQuestionIndex];
   let titleElement = document.querySelector("#question-title");
   titleElement.textContent = currentQuestion.question;
+
+  questionChoices.innerHTML = "";
+
   console.log(currentQuestion);
   for (let i = 0; i < currentQuestion.choice.length; i++) {
     let userChoice = document.createElement("button");
@@ -29,7 +32,7 @@ function getCurrentQuestion() {
     userChoice.setAttribute("value", currentQuestion.choice[i]);
     userChoice.textContent = i + 1 + ". " + currentQuestion.choice[i];
 
-    // adding listener to choices
+    // adding listener to question choices
     userChoice.onclick = questionClick;
 
     // displaying the questions
@@ -43,7 +46,7 @@ function questionClick() {
     time -= 5;
 
     // If the timer penalty puts the clock below 0 seconds
-    if (time < 0) {
+    if (time <= 0) {
       time = 0;
     }
     // display time again
@@ -54,7 +57,7 @@ function questionClick() {
   currentQuestionIndex++;
 
   if (currentQuestionIndex === questions.length) {
-    endQuiz(); 
+    endQuiz();
   } else {
     getCurrentQuestion();
   }
@@ -76,7 +79,7 @@ function keepTime() {
   time--;
   timerEl.textContent = time;
 
-  if(time =0) {
+  if ((time = 0)) {
     endQuiz();
   }
 }
