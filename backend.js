@@ -1,5 +1,4 @@
 let currentQuestionIndex = 0;
-// console.log(questions);
 let time = questions.length * 15;
 let timerId;
 
@@ -9,6 +8,7 @@ let timeElement = document.querySelector("#time");
 let questionChoices = document.querySelector("#choices");
 let timerEl = document.getElementById("time");
 
+// Clicking "start quiz" button will start the quiz & timer
 function startQuiz() {
   let startScreen = document.querySelector("#start");
   startScreen.setAttribute("class", "hide");
@@ -18,6 +18,7 @@ function startQuiz() {
   getCurrentQuestion();
 }
 
+// Will cycle through questions array with a "for loop" and present them one by one on screen
 function getCurrentQuestion() {
   let currentQuestion = questions[currentQuestionIndex];
   let titleElement = document.querySelector("#question-title");
@@ -40,6 +41,7 @@ function getCurrentQuestion() {
   }
 }
 
+// function to move on to next question on button click
 function questionClick() {
   // checking if they answered wrong
   if (this.value !== questions[currentQuestionIndex].answer) {
@@ -63,6 +65,7 @@ function questionClick() {
   }
 }
 
+// Ends quiz and brings up "Finished" page
 function endQuiz() {
   clearInterval(timerId);
 
@@ -75,11 +78,12 @@ function endQuiz() {
   questionsElement.setAttribute("class", "hide");
 }
 
+// Timer counting down
 function keepTime() {
   time--;
   timerEl.textContent = time;
 
-  if ((time = 0)) {
+  if (time === 0) {
     endQuiz();
   }
 }
