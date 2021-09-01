@@ -34,10 +34,10 @@ The "high score" button does not currently work. High scores are not stored at t
 David Volpe
 
 ## Version History
-1.0
+1.0 (High scores are not tracked)
 
 ## License
- undefined
+None
 
 ## Acknowledgments
 Built during UCF coding bootcamp.
