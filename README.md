@@ -35,3 +35,5 @@ This project was built during the UCF Coding Bootcamp.
 ### Additional Notes
 - Feel free to customize and extend the quiz questions in `questions.js`.
 - Contributions and feedback are welcome. Please create an issue or pull request if you have suggestions for improvements.
+
+By following this optimized README, you ensure that users have a clear and concise understanding of the project, its purpose, and how to get started.
