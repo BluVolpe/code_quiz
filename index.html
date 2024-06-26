@@ -11,29 +11,34 @@
   </head>
 
   <body>
-    <header>Coding Quiz</header>
+    <header>
+      <h1>Coding Quiz</h1>
+      <nav>
+        <a href="./highscores.html">High Scores</a>
+      </nav>
+    </header>
 
-    <nav><a href="">High Scores</a></nav>
+    <main>
+      <section id="start-screen" class="start">
+        <div>
+          <button id="start">Start</button>
+        </div>
+      </section>
 
-    <section id="start-screen" class="start">
-      <div>
-        <button id="start">Start</button>
-      </div>
-    </section>
+      <section id="questions" class="hide">
+        <h2 id="question-title"></h2>
+        <div id="choices" class="choices"></div>
+      </section>
 
-    <section id="questions" class="hide">
-      <h2 id="question-title"></h2>
-      <div id="choices" class="choices"></div>
-    </section>
-
-    <section id="end-screen" class="hide">
-      <h2>ALL DONE!</h2>
-      <p>Your final score is <span id="final-score"></span>.</p>
-      <p>
-        Enter initials: <input type="text" id="initials" max="3" />
-        <button id="submit">Submit</button>
-      </p>
-    </section>
+      <section id="end-screen" class="hide">
+        <h2>ALL DONE!</h2>
+        <p>Your final score is <span id="final-score"></span>.</p>
+        <p>
+          Enter initials: <input type="text" id="initials" maxlength="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </section>
+    </main>
 
     <div class="timer">Time: <span id="time">0</span></div>
 
@@ -41,3 +46,4 @@
     <script src="./backend.js"></script>
   </body>
 </html>
+

@@ -2,43 +2,44 @@ let currentQuestionIndex = 0;
 let time = questions.length * 15;
 let timerId;
 
-let startBtn = document.querySelector("#start");
-let questionsElement = document.querySelector("#questions");
-let timeElement = document.querySelector("#time");
-let questionChoices = document.querySelector("#choices");
-let timerEl = document.getElementById("time");
+const startBtn = document.querySelector("#start");
+const questionsElement = document.querySelector("#questions");
+const timeElement = document.querySelector("#time");
+const questionChoices = document.querySelector("#choices");
 
 // Clicking "start quiz" button will start the quiz & timer
 function startQuiz() {
-  let startScreen = document.querySelector("#start");
+  const startScreen = document.querySelector("#start-screen");
   startScreen.setAttribute("class", "hide");
   questionsElement.removeAttribute("class", "hide");
   timerId = setInterval(keepTime, 1000);
-  timerEl.textContent = time;
+  timeElement.textContent = time;
   getCurrentQuestion();
 }
 
 // Will cycle through questions array with a "for loop" and present them one by one on screen
 function getCurrentQuestion() {
-  let currentQuestion = questions[currentQuestionIndex];
-  let titleElement = document.querySelector("#question-title");
+  if (!questions || questions.length === 0) return;
+
+  const currentQuestion = questions[currentQuestionIndex];
+  const titleElement = document.querySelector("#question-title");
   titleElement.textContent = currentQuestion.question;
 
   questionChoices.innerHTML = "";
 
   console.log(currentQuestion);
-  for (let i = 0; i < currentQuestion.choice.length; i++) {
-    let userChoice = document.createElement("button");
-    userChoice.setAttribute("class", "choices");
-    userChoice.setAttribute("value", currentQuestion.choice[i]);
-    userChoice.textContent = i + 1 + ". " + currentQuestion.choice[i];
+  currentQuestion.choice.forEach((choice, index) => {
+    const userChoice = document.createElement("button");
+    userChoice.setAttribute("class", "choice");
+    userChoice.setAttribute("value", choice);
+    userChoice.textContent = `${index + 1}. ${choice}`;
 
     // adding listener to question choices
     userChoice.onclick = questionClick;
 
     // displaying the questions
     questionChoices.appendChild(userChoice);
-  }
+  });
 }
 
 // function to move on to next question on button click
@@ -52,7 +53,7 @@ function questionClick() {
       time = 0;
     }
     // display time again
-    timerEl.textContent = time;
+    timeElement.textContent = time;
   }
 
   // Moving on to next question
@@ -69,10 +70,10 @@ function questionClick() {
 function endQuiz() {
   clearInterval(timerId);
 
-  let endScreenEl = document.querySelector("#end-screen");
+  const endScreenEl = document.querySelector("#end-screen");
   endScreenEl.removeAttribute("class");
 
-  let finalScoreEl = document.querySelector("#final-score");
+  const finalScoreEl = document.querySelector("#final-score");
   finalScoreEl.textContent = time;
 
   questionsElement.setAttribute("class", "hide");
@@ -81,12 +82,13 @@ function endQuiz() {
 // Timer counting down
 function keepTime() {
   time--;
-  timerEl.textContent = time;
+  timeElement.textContent = time;
 
-  if (time === 0) {
+  if (time <= 0) {
     endQuiz();
   }
 }
 
 // start button for quiz
 startBtn.onclick = startQuiz;
+
