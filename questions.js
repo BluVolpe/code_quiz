@@ -1,5 +1,5 @@
 const questions = [
-  const questions = [
+  
     {
       question: "What is 'Bovine' commonly known as?",
       choice: ["Goat", "Cattle", "Chicken", "Pork"],
@@ -662,5 +662,5 @@ const questions = [
     }
   ];
   
-];
+
 
