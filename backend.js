@@ -17,7 +17,7 @@ function startQuiz() {
   getCurrentQuestion();
 }
 
-// Will cycle through questions array with a "for loop" and present them one by one on screen
+// Will cycle through questions array and present them one by one on screen
 function getCurrentQuestion() {
   if (!questions || questions.length === 0) return;
 
@@ -27,7 +27,6 @@ function getCurrentQuestion() {
 
   questionChoices.innerHTML = "";
 
-  console.log(currentQuestion);
   currentQuestion.choice.forEach((choice, index) => {
     const userChoice = document.createElement("button");
     userChoice.setAttribute("class", "choice");
@@ -46,7 +45,7 @@ function getCurrentQuestion() {
 function questionClick() {
   // checking if they answered wrong
   if (this.value !== questions[currentQuestionIndex].answer) {
-    time -= 5;
+    time -= 10;
 
     // If the timer penalty puts the clock below 0 seconds
     if (time <= 0) {
@@ -91,4 +90,3 @@ function keepTime() {
 
 // start button for quiz
 startBtn.onclick = startQuiz;
-
